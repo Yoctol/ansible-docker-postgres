@@ -1,0 +1,36 @@
+---
+# tasks file for postgresql
+
+- name: ensure postgres docker image
+  become: yes
+  docker_image:
+    name: postgres
+    tag: "{{ postgres_docker_tag | default(omit) }}"
+
+- name: check/create data store container
+  become: yes
+  docker:
+    name: "{{ datastore_container_name }}"
+    image: >-
+      postgres{{ ':%s' % postgres_docker_tag
+      if postgres_docker_tag is defined else '' }}
+    state: stopped
+    volumes:
+      - /var/lib/postgresql/data
+    command: "true"
+  when: use_datastore_container
+
+- name: check/create postgresql container
+  become: yes
+  docker:
+    name: "{{ postgres_container_name }}"
+    image: postgres
+    state: started
+    restart_policy: always
+    env: {{ postgres_docker_env if postgres_docker_env is defined else omit }}
+    volumes_from: >-
+      {{ [datastore_container_name]
+      if use_datastore_container else omit }}
+    ports: >-
+      {{ ['%s:5432' % expose_host_port]
+      if expose_host_port is defined else omit }}
