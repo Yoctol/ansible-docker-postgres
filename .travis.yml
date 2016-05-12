@@ -16,8 +16,6 @@ install:
   - pip install ansible
   - ansible --version
 
-  - export ANSIBLE_ROLES_PATH="../"
-
   # Install docker
   - ansible-galaxy install angstwad.docker_ubuntu
   - ansible-playbook tests/docker.yml -i tests/inventory
