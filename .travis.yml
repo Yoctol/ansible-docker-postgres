@@ -20,6 +20,7 @@ install:
   # Install docker
   - ansible-galaxy install angstwad.docker_ubuntu
   - ansible-playbook tests/docker.yml --sudo -i tests/inventory
+  - docker version
 
 script:
   # Basic role syntax check
