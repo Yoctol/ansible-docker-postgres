@@ -3,7 +3,8 @@ language: python
 python: "2.7"
 
 # Use the new container infrastructure
-sudo: false
+sudo: required
+dist: trusty
 
 # Install ansible
 addons:
@@ -18,12 +19,12 @@ install:
 
   # Install docker
   - ansible-galaxy install angstwad.docker_ubuntu
-  - ansible-playbook tests/docker.yml -i tests/inventory
+  - ansible-playbook tests/docker.yml --sudo -i tests/inventory
 
 script:
   # Basic role syntax check
   - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
-  - ansible-playbook tests/test.yml -i tests/inventory -vvvv
+  - ansible-playbook tests/test.yml -i tests/inventory --sudo -vvvv
 
 notifications:
   slack:
