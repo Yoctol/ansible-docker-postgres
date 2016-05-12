@@ -1,5 +1,4 @@
 ---
 - hosts: localhost
   roles:
-    - role: docker.ubuntu
-    
+    - role: angstwad.docker_ubuntu
