@@ -1,5 +1,4 @@
 ---
-# defaults file for postgresql
 use_datastore_container: true
 datastore_container_name: dbstore
 postgres_container_name: postgres
