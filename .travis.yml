@@ -1,7 +1,8 @@
 ---
 language: python
-cache: pip
 python: "2.7"
+env:
+  - ANSIBLE_VERSION=2.0.2.0
 
 # Use the new container infrastructure
 sudo: required
@@ -18,7 +19,7 @@ before_install:
 
 install:
   # Install ansible
-  - pip install ansible
+  - pip install ansible==$ANSIBLE_VERSION
   - ansible --version
 
   # Install docker

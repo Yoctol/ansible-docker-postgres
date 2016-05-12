@@ -1,11 +1,5 @@
 ---
 # tasks file for postgresql
-
-- name: ensure postgres docker image
-  docker_image:
-    name: postgres
-    tag: "{{ postgres_docker_tag | default(omit) }}"
-
 - name: check/create data store container
   docker:
     name: "{{ datastore_container_name }}"
