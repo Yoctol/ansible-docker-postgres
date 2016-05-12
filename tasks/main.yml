@@ -10,8 +10,7 @@
   docker:
     name: "{{ datastore_container_name }}"
     image: >-
-      postgres{{ ':%s' % postgres_docker_tag
-      if postgres_docker_tag is defined else '' }}
+      postgres{{ ':%s' % postgres_docker_tag if postgres_docker_tag else '' }}
     state: stopped
     volumes:
       - /var/lib/postgresql/data
@@ -24,10 +23,7 @@
     image: postgres
     state: started
     restart_policy: always
-    env: {{ postgres_docker_env if postgres_docker_env is defined else omit }}
+    env: "{{ postgres_docker_env if postgres_docker_env else omit }}"
     volumes_from: >-
-      {{ [datastore_container_name]
-      if use_datastore_container else omit }}
-    ports: >-
-      {{ ['%s:5432' % expose_host_port]
-      if expose_host_port is defined else omit }}
+      {{ [datastore_container_name] if use_datastore_container else omit }}
+    ports: "{{ ['%s:5432' % expose_host_port] if expose_host_port else omit }}"

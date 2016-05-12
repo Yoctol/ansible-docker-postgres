@@ -1,4 +1,7 @@
 ---
+postgres_docker_tag: ''
 use_datastore_container: true
 datastore_container_name: dbstore
 postgres_container_name: postgres
+postgres_docker_env: []
+expose_host_port: 0
