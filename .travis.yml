@@ -1,5 +1,6 @@
 ---
 language: python
+cache: pip
 python: "2.7"
 
 # Use the new container infrastructure
@@ -11,6 +12,9 @@ addons:
   apt:
     packages:
     - python-pip
+
+before_install:
+  - sudo apt-get update -qq
 
 install:
   # Install ansible
