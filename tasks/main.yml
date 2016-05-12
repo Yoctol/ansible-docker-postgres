@@ -5,7 +5,7 @@
     name: "{{ datastore_container_name }}"
     image: >-
       postgres{{ ':%s' % postgres_docker_tag if postgres_docker_tag else '' }}
-    state: stopped
+    state: present
     volumes:
       - /var/lib/postgresql/data
     command: "true"
@@ -14,7 +14,8 @@
 - name: check/create postgresql container
   docker:
     name: "{{ postgres_container_name }}"
-    image: postgres
+    image: >-
+      postgres{{ ':%s' % postgres_docker_tag if postgres_docker_tag else '' }}
     state: started
     restart_policy: always
     env: "{{ postgres_docker_env if postgres_docker_env else omit }}"
