@@ -1,7 +1,6 @@
 language: python
 python: '2.7'
 env:
-- ANSIBLE_VERSION=1.9.6
 - ANSIBLE_VERSION=2.0.2.0
 sudo: required
 dist: trusty
@@ -26,6 +25,7 @@ script:
 - ansible-playbook tests/test.yml -i tests/inventory --sudo -vvvv
 
 notifications:
+  email: false
   slack:
     rooms:
       secure: LnbB/M+I1jv+ZuAYxhgiwE+mplCze6Tolpw70lM/Nb/AP9MZT9lT8D8FRuUYMT5BQfXWcFJB/NOdN+KZQRBoHWTXdKyQRcSZ7Tdc1vQ5fdqomOjt28LgXr8CNIGTEsN1soNkDhs7AMkpMCBo9lg7bFWZdR95wkPWLS/Mvrk9fdEHR+/g5TKT8yImMXwGEw7mzvJ1DNH95eXxj75ogowM6tPifqxoz5thGxqLhQBdhl7+PHOYDgCN9S0aOkzQQil5u+zmbCQZ21y1pnCCP7DvKONjjBU38+goasB7R7q0dv8AxORF8rgbSzTzYTt1XltgixRV4g30lNiecg1N+cHoEHvyxGH4agFzxgv/tENG6r/plIEYVU5u+WtsPlEkrMUU8NDUVVTjK2H32W+Gx+oc8NVyXHLAcSYojp3yDc9LFcYZONiNRU4FGpXv4e9Ejy6hTd8vkbF8R9Th6xr+BfWvav1Z3GgckU2WunCzaSso4FObmUHX0t7hyEcW5985UCTcPHJxO85wETkOwJE1HIPorlvA1Iih234C/JGLBydL4z2QSw8Aw1wsqY9eEevlvewDFqozDKbXfqdWA2MaucNOHHY2l8yzntTnQUS/nTItHkm7hHG+qTDsYGt1y1AU0w8lfs0r0j4eDwGyRrW6k1mA+GGMSS+ANcrq+hWPxHxh+Pw=
