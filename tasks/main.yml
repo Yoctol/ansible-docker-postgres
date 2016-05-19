@@ -22,3 +22,12 @@
     volumes_from: >-
       {{ [datastore_container_name] if use_datastore_container else omit }}
     ports: "{{ ['%s:5432' % expose_host_port] if expose_host_port else omit }}"
+
+- name: inspect postgres docker
+  command: >
+    docker inspect --type=container
+    --format='{{ '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' }}'
+    {{ postgres_container_name }}
+  register: postgres_address
+
+- set_fact: postgres_address={{ postgres_address.stdout }}
