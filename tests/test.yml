@@ -2,3 +2,6 @@
 - hosts: localhost
   roles:
     - "{{ playbook_dir }}/../"
+
+  tasks:
+    - assert: { that: "postgres_address is defined" }
