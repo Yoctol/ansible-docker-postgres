@@ -28,6 +28,6 @@
     docker inspect --type=container
     --format='{{ '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' }}'
     {{ postgres_container_name }}
-  register: postgres_address
+  register: postgres_address_result
 
-- set_fact: postgres_address={{ postgres_address.stdout }}
+- set_fact: postgres_address={{ postgres_address_result.stdout }}

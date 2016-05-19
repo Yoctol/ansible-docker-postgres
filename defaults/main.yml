@@ -1,7 +1,21 @@
 ---
-postgres_docker_tag: ''
+# Optional, whether to use a separate container to store postgresql data files.
+# Default true.
 use_datastore_container: true
+
+# Optional, the container name to store data. Default 'postgres-datastore'.
 datastore_container_name: postgres-datastore
+
+# Optional, the postgres docker image tag name to use. Default 'latest'.
+postgres_docker_tag: ''
+
+# Optional, the container name where postgresql running in. Default 'postgres'.
 postgres_container_name: postgres
+
+# Optional, a dict of env var to be passed into postgresql container.
+# Check [postgres docker page](https://hub.docker.com/_/postgres).
 postgres_docker_env: []
+
+# Optional, the port to expose postgresql to the host.
+# Default not expose postgresql to the host. 
 expose_host_port: 0
