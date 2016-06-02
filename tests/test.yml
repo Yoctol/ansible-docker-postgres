@@ -4,4 +4,4 @@
     - "{{ playbook_dir }}/../"
 
   tasks:
-    - assert: { that: "postgres_address is defined" }
+    - assert: { that: "postgres_container_address is defined" }
