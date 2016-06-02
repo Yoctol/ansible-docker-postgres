@@ -61,8 +61,12 @@ Example Playbook
         POSTGRES_DB: pg_default_db
         POSTGRES_INITDB_ARGS: "--data-checksums"
 
-# The address of container was set to the fact `postgres_address`
-- postgers_user: name=foo login_user=postgres login_host={{ postgres_address }}
+# The address of container is set to the fact `postgres_container_address`.
+# You can use it to connect postgres server.
+- postgers_user:
+    name: foo
+    login_user: postgres
+    login_host: "{{ postgres_container_address }}"
 ```
 
 License

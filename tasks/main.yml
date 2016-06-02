@@ -30,4 +30,4 @@
     {{ postgres_container_name }}
   register: postgres_address_result
 
-- set_fact: postgres_address={{ postgres_address_result.stdout }}
+- set_fact: postgres_container_address={{ postgres_address_result.stdout }}
