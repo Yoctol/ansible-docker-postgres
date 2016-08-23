@@ -63,7 +63,7 @@ Example Playbook
 
 # The address of container is set to the fact `postgres_container_address`.
 # You can use it to connect postgres server.
-- postgers_user:
+- postgres_user:
     name: foo
     login_user: postgres
     login_host: "{{ postgres_container_address }}"
