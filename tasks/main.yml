@@ -1,7 +1,7 @@
 ---
-# tasks file for postgresql
+
 - name: check/create data store container
-  docker:
+  docker_container:
     name: "{{ datastore_container_name }}"
     image: >-
       postgres{{ ':%s' % postgres_docker_tag if postgres_docker_tag else '' }}
@@ -12,7 +12,7 @@
   when: use_datastore_container
 
 - name: check/create postgresql container
-  docker:
+  docker_container:
     name: "{{ postgres_container_name }}"
     image: >-
       postgres{{ ':%s' % postgres_docker_tag if postgres_docker_tag else '' }}
@@ -21,7 +21,7 @@
     env: "{{ postgres_docker_env if postgres_docker_env else omit }}"
     volumes_from: >-
       {{ [datastore_container_name] if use_datastore_container else omit }}
-    ports: "{{ ['%s:5432' % expose_host_port] if expose_host_port else omit }}"
+    exposed_ports: "{{ ['%s:5432' % expose_host_port] if expose_host_port else omit }}"
 
 - name: inspect postgres docker
   command: >
