@@ -7,9 +7,9 @@ Requirements
 ------------
 
 - python >= 2.6
-- docker-py >= 0.3.0
-- Docker >= 1.9
-- Ansible >= 2.1
+- docker-py >= 1.7.0
+- Docker API >= 1.20
+- Ansible >= 2.2
 
 Role Variables
 --------------
